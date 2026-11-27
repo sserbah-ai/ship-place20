@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans Arabic", "Noto Naskh Arabic", Tahoma, sans-serif;
+  --font-display: "Readex Pro", "IBM Plex Sans Arabic", Tahoma, sans-serif;
+  --color-bg: #f3f6f1;
+  --color-surface: #fffcf8;
+  --color-ink: #14241c;
+  --color-muted: #5c6e64;
+  --color-line: #d5e2d8;
+  --color-primary: #0c6e58;
+  --color-primary-deep: #084a3c;
+  --color-primary-soft: #e5f3ee;
+  --color-primary-fg: #f4fbf7;
+  --color-glucose: #b7791f;
+  --color-glucose-soft: #f8efd8;
+  --radius-card: 1.5rem;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    min-height: 100%;
+    background: var(--color-bg);
+    overflow-x: clip;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--color-primary) 28%, white);
+  }
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding: 0.65rem 1.2rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+  }
+  .btn:disabled {
+    opacity: 0.45;
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-primary-fg);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--color-primary-deep);
+  }
+  .btn-ghost {
+    border: 1px solid var(--color-line);
+    background: var(--color-surface);
+    color: var(--color-ink);
+  }
+  .btn-ghost:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    color: var(--color-primary-deep);
+  }
+  .btn-on {
+    border: 1px solid var(--color-primary);
+    background: var(--color-primary-soft);
+    color: var(--color-primary-deep);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
